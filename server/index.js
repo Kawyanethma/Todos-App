@@ -1,12 +1,13 @@
 const express = require("express");
 const pool = require("./db");
-const port = 3000;
+const port = process.env.PORT || 3000;
+require("dotenv").config();
 
 const app = express();
 app.use(express.json());
 
 const todosRouter = require("./router/todos.router");
-app.use("/todos", todosRouter);
+app.use("/api/todos", todosRouter);
 
 const setupDatabase = async () => {
   try {
@@ -21,4 +22,11 @@ const setupDatabase = async () => {
 
 setupDatabase();
 
-app.listen(port, () => console.log(`Server has started on port: ${port}`));
+// Uncomment the following lines to run the server conditionally
+if (require.main === module) {
+  app.listen(port, () => {
+    console.log(`Server has started on port: ${port}`);
+  });
+}
+
+module.exports = app; // Export the app for testing

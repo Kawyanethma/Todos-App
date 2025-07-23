@@ -3,7 +3,7 @@ const pool = require("../db");
 exports.getTodosController = async (req, res) => {
   try {
     const todos = await pool.query(
-      "SELECT * FROM todos ORDER BY id DESC LIMIT 5"
+      "SELECT * FROM todos WHERE completed = FALSE ORDER BY id DESC LIMIT 5"
     );
     res.status(200).json(todos.rows);
   } catch (err) {
