@@ -10,17 +10,7 @@ services:
     volumes:
       - ./db/init.sql:/docker-entrypoint-initdb.d/init.sql
     ports:
-      - '5433:5432'  # changed to avoid local conflict
-
-  pgadmin:
-    image: dpage/pgadmin4
-    environment:
-      PGADMIN_DEFAULT_EMAIL: admin@example.com
-      PGADMIN_DEFAULT_PASSWORD: admin
-    ports:
-      - '8080:80'
-    depends_on:
-      - db
+      - '5433:5432' 
 
   backend:
     build: ./server

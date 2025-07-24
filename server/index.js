@@ -21,7 +21,7 @@ app.use("/api/todos", todosRouter);
 const setupDatabase = async () => {
   try {
     await pool.query(
-      "CREATE TABLE IF NOT EXISTS todos( id SERIAL PRIMARY KEY, title VARCHAR(100), completed BOOLEAN, description TEXT)"
+      "CREATE TABLE IF NOT EXISTS tasks( id SERIAL PRIMARY KEY, title VARCHAR(100), completed BOOLEAN, description TEXT)"
     );
     console.log("Database setup complete");
   } catch (err) {
