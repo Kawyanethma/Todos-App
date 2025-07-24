@@ -1,9 +1,18 @@
 const express = require("express");
 const pool = require("./db");
+const cors = require("cors");
 const port = process.env.PORT || 3000;
 require("dotenv").config();
 
 const app = express();
+
+app.use(
+  cors({
+    origin: "http://localhost:5173",
+    credentials: true,
+  })
+);
+
 app.use(express.json());
 
 const todosRouter = require("./router/todos.router");

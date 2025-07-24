@@ -1,5 +1,15 @@
 const pool = require("../db");
 
+exports.getAllTodosController = async (req, res) => {
+  try {
+    const todos = await pool.query("SELECT * FROM todos ORDER BY id DESC");
+    res.status(200).json(todos.rows);
+  } catch (err) {
+    console.error("Error fetching all todos:", err);
+    res.status(500).send("Internal Server Error");
+  }
+};
+
 exports.getTodosController = async (req, res) => {
   try {
     const todos = await pool.query(

@@ -2,7 +2,7 @@ import { Divider } from "@heroui/divider";
 
 import GreetingHeader from "@/components/greeting-header";
 import FormSection from "@/components/form-section";
-import TasksSection from "@/components/tasks-section";
+import TasksSection from "@/components/tasks/tasks-section";
 
 function App() {
   return (
